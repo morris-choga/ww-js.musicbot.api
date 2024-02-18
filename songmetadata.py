@@ -17,12 +17,14 @@ def get_song_metadata(song):
         album = yt.get_album(results[0]["album"]["id"])
         year = album["year"]
         url = album['thumbnails'][-1]['url']
+        return {"title": title, "album_name": album_name, "artist": artist, "year": year, "video_id": video_id,
+                "url": url}
 
     except Exception  as e:
         print(f"An error occurred: {e}")
-        return {"Error":"An error has occured in get_song function"}
+        # return {"Error":"An error has occured in get_song function"}
 
-    return {"title":title, "album_name":album_name, "artist":artist,"year":year,"video_id":video_id, "url":url}
+
 
 
 

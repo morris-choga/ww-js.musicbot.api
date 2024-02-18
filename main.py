@@ -17,7 +17,7 @@ def hello_world():
     tagger(song_metadata["title"],song_metadata["artist"],song_metadata["album_name"],song_metadata["url"],song)
 
     # return song
-    return str(song)
+    return song
 
 @app.route('/get_status', methods=['GET'])
 def get_status():
