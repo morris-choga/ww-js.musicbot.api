@@ -16,7 +16,7 @@ def hello_world():
     tagger(song_metadata["title"],song_metadata["artist"],song_metadata["album_name"],song_metadata["url"],song)
 
     # return song
-    return {"title":6, "album_name":66, "artist":666,"year":6666,"video_id":66, "url":66}
+    return song_metadata
 
 @app.route('/get_status', methods=['GET'])
 def get_status():
