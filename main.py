@@ -10,13 +10,13 @@ app = Flask(__name__)
 def hello_world():
     requested_song = request.get_json()
     song_metadata = get_song_metadata(f"{requested_song['key']}")
-    print("Anything happening here?")
+
 
     song = download(song_metadata["title"],song_metadata["video_id"],os.path.join("/usr/src/api","songs"))
     tagger(song_metadata["title"],song_metadata["artist"],song_metadata["album_name"],song_metadata["url"],song)
 
     # return song
-    return "Noise"
+    return {"title":6, "album_name":66, "artist":666,"year":6666,"video_id":66, "url":66}
 
 @app.route('/get_status', methods=['GET'])
 def get_status():
