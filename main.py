@@ -14,8 +14,8 @@ def hello_world():
     song = download(song_metadata["title"],song_metadata["video_id"],os.path.join("/usr/src/api","songs"))
     tagger(song_metadata["title"],song_metadata["artist"],song_metadata["album_name"],song_metadata["url"],song)
 
-    return song
-
+    # return song
+    return requested_song
 
 @app.route('/get_status', methods=['GET'])
 def get_status():
@@ -25,3 +25,8 @@ if __name__ =="__main__":
     # app.run(debug=True,use_reloader=False)
     # app.run(debug=True,use_reloader=False,host='0.0.0.0')
     app.run(debug=True,use_reloader=True,host='0.0.0.0')
+
+
+
+# build -t bot .
+# docker run -v /songs:/usr/src/app/songs bot
