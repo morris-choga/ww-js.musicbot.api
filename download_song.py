@@ -17,7 +17,7 @@ def download(title,video_id,location):
 
     try:
 
-        yt = YouTube(link,use_oauth=True)
+        yt = YouTube(link)
         yt.title = "".join([c for c in yt.title if c not in ['/', '\\', '|', '?', '*', ':', '>', '<', '"']])
         video = yt.streams.filter(only_audio=True).first()
         vid_file = video.download(output_path=location)
