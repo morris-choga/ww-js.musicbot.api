@@ -22,6 +22,13 @@ def download(title,video_id,location):
         base = os.path.splitext(vid_file)[0]
         audio_file = base + ".mp3"
 
+    except Exception as e:
+        print(f"Error has occured with ytmusicapi: {str(e)}")
+        return f"Error has occured with ytmusicapi: {str(e)}"
+
+
+
+    try:
         mp4_no_frame = AudioFileClip(vid_file)
         mp4_no_frame.write_audiofile(audio_file, logger=None)
         mp4_no_frame.close()
@@ -30,10 +37,9 @@ def download(title,video_id,location):
         audio_file = location + "/" + yt.title + ".mp3"
         return audio_file
 
-
     except PytubeError as e:
-        print(f"An error occured while downloading: " + str(e))
-        return f"An error occured while downloading: " + str(e)
+        print(f"An error occured wwith PytubeError: " + str(e))
+        return f"An error occured with PytubeError: " + str(e)
 
     except Exception as e:
         print(f"Error has occured: {str(e)}")
