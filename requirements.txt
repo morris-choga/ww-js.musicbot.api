@@ -4,3 +4,4 @@ pytube
 moviepy
 mutagen
 gunicorn
+yt-dlp
