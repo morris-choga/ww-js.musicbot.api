@@ -15,72 +15,72 @@ def download(title,video_id,location):
 
 
 
-    # try:
-    #
-    #     yt = YouTube(link)
-    #     yt.title = "".join([c for c in yt.title if c not in ['/', '\\', '|', '?', '*', ':', '>', '<', '"']])
-    #     video = yt.streams.filter(only_audio=True).first()
-    #     vid_file = video.download(output_path=location)
-    #     base = os.path.splitext(vid_file)[0]
-    #     audio_file = base + ".mp3"
-    #
-    # except Exception as e:
-    #     print(f"Error has occured with ytmusicapi: {str(e)}")
-    #     return f"Error has occured with ytmusicapi: {str(e)}"
-
     try:
 
-        options = {
-            'format': 'm4a/bestaudio/best',  # Choose the best available formats
-            'keepvideo': False,
-            'cachedir': False,
-            'outtmpl': f'{location}/%(title)s.%(ext)s',  # Output filename template
-            "ffmpeg_location": "/usr/bin/ffmpeg",
-            'postprocessors': [{
-                'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'mp3',
-                'preferredquality': '192',  # Preferred audio quality (kbps)
-            }],
-        }
-
-
-
-        with yt_dlp.YoutubeDL(options) as ydl:
-            result = ydl.download([link])
-            info_dict = ydl.extract_info(link, download=False)
-            vid_title = info_dict.get('title', None)
-            # os.replace(f"{location}\\{vid_title}.mp3", location + "\\" + title + ".mp3")
-            audio = location + "/" + title + ".mp3"
-            return audio
-
-
-
-
-
+        yt = YouTube(link,use_oauth=True)
+        yt.title = "".join([c for c in yt.title if c not in ['/', '\\', '|', '?', '*', ':', '>', '<', '"']])
+        video = yt.streams.filter(only_audio=True).first()
+        vid_file = video.download(output_path=location)
+        base = os.path.splitext(vid_file)[0]
+        audio_file = base + ".mp3"
 
     except Exception as e:
         print(f"Error has occured with ytmusicapi: {str(e)}")
         return f"Error has occured with ytmusicapi: {str(e)}"
 
-
-
     # try:
     #
-    #     mp4_no_frame = AudioFileClip(vid_file)
-    #     mp4_no_frame.write_audiofile(audio_file, logger=None)
-    #     mp4_no_frame.close()
-    #     os.remove(vid_file)
-    #     os.replace(audio_file, location + "/" + yt.title + ".mp3")
-    #     audio_file = location + "/" + yt.title + ".mp3"
-    #     return audio_file
+    #     options = {
+    #         'format': 'm4a/bestaudio/best',  # Choose the best available formats
+    #         'keepvideo': False,
+    #         'cachedir': False,
+    #         'outtmpl': f'{location}/%(title)s.%(ext)s',  # Output filename template
+    #         "ffmpeg_location": "/usr/bin/ffmpeg",
+    #         'postprocessors': [{
+    #             'key': 'FFmpegExtractAudio',
+    #             'preferredcodec': 'mp3',
+    #             'preferredquality': '192',  # Preferred audio quality (kbps)
+    #         }],
+    #     }
+
+
+
+    #     with yt_dlp.YoutubeDL(options) as ydl:
+    #         result = ydl.download([link])
+    #         info_dict = ydl.extract_info(link, download=False)
+    #         vid_title = info_dict.get('title', None)
+    #         # os.replace(f"{location}\\{vid_title}.mp3", location + "\\" + title + ".mp3")
+    #         audio = location + "/" + title + ".mp3"
+    #         return audio
     #
-    # except PytubeError as e:
-    #     print(f"An error occured with PytubeError: " + str(e))
-    #     return f"An error occured with PytubeError: " + str(e)
+    #
+    #
+    #
+    #
     #
     # except Exception as e:
-    #     print(f"Error has occured: {str(e)}")
-    #     return f"Error has occured: {str(e)}"
+    #     print(f"Error has occured with ytmusicapi: {str(e)}")
+    #     return f"Error has occured with ytmusicapi: {str(e)}"
+
+
+
+    try:
+
+        mp4_no_frame = AudioFileClip(vid_file)
+        mp4_no_frame.write_audiofile(audio_file, logger=None)
+        mp4_no_frame.close()
+        os.remove(vid_file)
+        os.replace(audio_file, location + "/" + yt.title + ".mp3")
+        audio_file = location + "/" + yt.title + ".mp3"
+        return audio_file
+
+    except PytubeError as e:
+        print(f"An error occured with PytubeError: " + str(e))
+        return f"An error occured with PytubeError: " + str(e)
+
+    except Exception as e:
+        print(f"Error has occured: {str(e)}")
+        return f"Error has occured: {str(e)}"
 
 
 def tagger(title, artist, album, thumbnail, location):
