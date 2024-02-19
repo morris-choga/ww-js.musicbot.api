@@ -40,12 +40,12 @@ def download(title,video_id,location):
             'cachedir': False,
             'outtmpl': f'{location}/%(title)s.%(ext)s',  # Output filename template
             # "ffmpeg_location": "C:\\Users\\Mchog\\Downloads\\ffmpeg-2024-02-15-git-a2cfd6062c-full_build\\bin",
-            "ffmpeg_location": "/usr/bin/ffmpeg",
-            'postprocessors': [{
-                'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'mp3',
-                'preferredquality': '192',  # Preferred audio quality (kbps)
-            }],
+            # "ffmpeg_location": "/usr/bin/ffmpeg",
+            # 'postprocessors': [{
+            #     'key': 'FFmpegExtractAudio',
+            #     'preferredcodec': 'mp3',
+            #     'preferredquality': '192',  # Preferred audio quality (kbps)
+            # }],
         }
 
 
