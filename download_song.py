@@ -11,7 +11,7 @@ from pytube.exceptions import PytubeError
 
 def download(title,video_id,location):
     link = f'https://music.youtube.com/watch?v={video_id}'
-    filename = f"{title,}.mp3"
+    filename = f"{title}.mp3"
 
     try:
 
