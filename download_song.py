@@ -35,7 +35,7 @@ def download(title,video_id,location):
             'format': 'm4a/bestaudio/best',  # Choose the best available formats
             '--user-agent':'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0',
             '--cookies':'/root/Downloads/cooffkies.txt',
-            '--proxy':'198.176.56.44',
+            '--proxy':'198.176.56.44:80',
             'keepvideo': False,
             'cachedir': False,
             'outtmpl': f'{location}/%(title)s.%(ext)s',  # Output filename template
