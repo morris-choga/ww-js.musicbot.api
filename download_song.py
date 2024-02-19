@@ -12,6 +12,7 @@ from pytube.exceptions import PytubeError
 
 def download(title,video_id,location):
     link = f'https://music.youtube.com/watch?v={video_id}'
+    # location = "C:\\Users\\Mchog\Desktop\\internship"
 
 
 
@@ -34,9 +35,11 @@ def download(title,video_id,location):
             'format': 'm4a/bestaudio/best',  # Choose the best available formats
             '--user-agent':'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0',
             '--cookies':'/root/Downloads/cooffkies.txt',
+            '--proxy':'198.176.56.44',
             'keepvideo': False,
             'cachedir': False,
             'outtmpl': f'{location}/%(title)s.%(ext)s',  # Output filename template
+            # "ffmpeg_location": "C:\\Users\\Mchog\\Downloads\\ffmpeg-2024-02-15-git-a2cfd6062c-full_build\\bin",
             "ffmpeg_location": "/usr/bin/ffmpeg",
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
@@ -48,6 +51,7 @@ def download(title,video_id,location):
 
 
         with yt_dlp.YoutubeDL(options) as ydl:
+            # result = ydl.download([link], cookies='/root/Downloads/cooffkies.txt')
             result = ydl.download([link])
             info_dict = ydl.extract_info(link, download=False)
             vid_title = info_dict.get('title', None)
