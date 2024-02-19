@@ -7,7 +7,7 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-RUN sudo apt install ffmpeg
+RUN apt install ffmpeg
 
 COPY . .
 
