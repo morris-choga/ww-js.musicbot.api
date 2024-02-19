@@ -33,7 +33,7 @@ def download(title,video_id,location):
         options = {
             'format': 'm4a/bestaudio/best',  # Choose the best available formats
             '--user-agent':'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0',
-            '--cookies':'cookies.txt',
+            '--cookies':'/root/Downloads/cookies.txt',
             'keepvideo': False,
             'cachedir': False,
             'outtmpl': f'{location}/%(title)s.%(ext)s',  # Output filename template
