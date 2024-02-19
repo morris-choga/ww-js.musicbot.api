@@ -30,4 +30,4 @@ if __name__ =="__main__":
 
 
 # build -t bot .
-# docker run -v /songs:/usr/src/app/songs bot
+# docker run -v /songs:/usr/src/app/songs --name bot -p 5000:5000 bot
