@@ -33,6 +33,7 @@ def download(title,video_id,location):
         options = {
             'format': 'm4a/bestaudio/best',  # Choose the best available formats
             'keepvideo': False,
+            'cachedir': False,
             'outtmpl': f'{location}/%(title)s.%(ext)s',  # Output filename template
             "ffmpeg_location": "/usr/bin/ffmpeg",
             'postprocessors': [{
