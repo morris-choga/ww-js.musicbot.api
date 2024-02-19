@@ -33,11 +33,11 @@ def download(title,video_id,location):
 
     except PytubeError as e:
         print(f"An error occured while downloading: " + str(e))
-        return str(e)
+        return f"An error occured while downloading: " + str(e)
 
     except Exception as e:
         print(f"Error has occured: {str(e)}")
-        return str(e)
+        return f"Error has occured: {str(e)}"
 
 
 def tagger(title, artist, album, thumbnail, location):
