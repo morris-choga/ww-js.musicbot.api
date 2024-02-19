@@ -7,9 +7,8 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-
+RUN sudo apt install ffmpeg
 
 COPY . .
-
 
 CMD ["gunicorn", "--bind","0.0.0.0:5000","main:app"]
