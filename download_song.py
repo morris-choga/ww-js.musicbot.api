@@ -111,4 +111,4 @@ def tagger(title, artist, album, thumbnail, location):
         audio.save(v2_version=3)
 
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"An error occurred while putting tags: {e}")

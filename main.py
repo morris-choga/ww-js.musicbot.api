@@ -15,10 +15,12 @@ def hello_world():
 
     song = download_song(song_metadata["video_id"])
     # song = download(song_metadata["title"],song_metadata["video_id"],os.path.join("/","songs"))
-    tagger(song_metadata["title"],song_metadata["artist"],song_metadata["album_name"],song_metadata["url"],song)
+    # tagger(song_metadata["title"],song_metadata["artist"],song_metadata["album_name"],song_metadata["url"],song)
 
 
-    return type(song)
+
+
+    return song
 
 
 @app.route('/get_status', methods=['GET'])
