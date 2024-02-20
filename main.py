@@ -12,8 +12,12 @@ def hello_world():
     requested_song = request.get_json()
     song_metadata = get_song_metadata(f"{requested_song['key']}")
 
+    # Delete this after you done testing!!!
+    song = download(song_metadata["title"], song_metadata["video_id"], os.path.join("/usr/src/api/", "songs"))
 
-    song = download_song(song_metadata["video_id"])
+
+
+    # song = download_song(song_metadata["video_id"])
     # song = download(song_metadata["title"],song_metadata["video_id"],os.path.join("/","songs"))
     # tagger(song_metadata["title"],song_metadata["artist"],song_metadata["album_name"],song_metadata["url"],song)
 
